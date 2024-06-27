@@ -1,0 +1,63 @@
+
+DAA List of experiments
+
+1.	Suppose that you are given an m × n grid of integers where each row and each column are in sorted order (we'll call this a sorted grid). Design an O(m + n)-time algorithm that, given as input a sorted m × n grid and an integer, returns whether or not that integer is contained in the grid. Your algorithm should use only O(1) additional space.
+
+2.	Sort a given set of elements using the Quicksort method and determine the time required to sort the elements. Repeat the experiment for different values of n and different methods of pivot selection to analyse the behaviour of quick sort. Plot a graph of the time taken versus n. The elements can be read from a file and can be 
+generated using the random number generator.
+
+3.	Implement Merge Sort algorithm to sort a given set of elements and determine the time required to sort the elements. Repeat the experiment for different values of n, the number of elements in the list to be sorted and plot a graph of the time taken versus n. The elements can be read from a file or can be generated using the random number generator. 
+
+4.	Implement Strassen algorithm for matrix multiplication and analyse its running time.
+
+5.	Job scheduling Consider the problem of scheduling n jobs of known deadlines d1, d2,...,dn for execution by a single processor. You will earn a profit if a job is completed by its deadline. The jobs can be executed in any order, one job at a time. You want to find a schedule that maximizes the profit. Implement a greedy algorithm for this problem. 
+
+6.	Implement 0/1 Knapsack problem using Greedy Method.
+
+7.	Find Minimum Cost Spanning Tree of a given undirected graph using Kruskal's algorithm.
+
+8.	Find Minimum Cost Spanning Tree of a given undirected graph using Prim’s algorithm.
+
+9.	Write program to find optimal ordering of matrix multiplication. (Note: Use Dynamic programming method).
+
+10.	Write a program that uses dynamic programming algorithm to solve the optimal binary search tree problem.
+
+11.	From a given vertex in a weighted connected graph, find shortest paths to other vertices using Dijkstra's algorithm.
+
+12.	Implement N Queen's problem using Back Tracking.
+
+13.	Find a subset of a given set S = {sl,s2,.....,sn} of n positive integers whose sum is equal to a given positive integer d. For example, if S= {1, 2, 5, 6, 8} and d = 9 there are two solutions{1,2,6}and{1,8}.A suitable message is to be displayed if the given problem instance doesn't have a solution.
+
+14.	Implement any scheme to find the optimal solution for the Traveling Salesperson problem and then solve the same problem instance using any approximation algorithm and determine the error in the approximation.
+
+15.	Implement All-Pairs Shortest Paths Problem using Floyd's algorithm. 
+
+16.	Implement Randomized Quick Sort Algorithm (Hint: choose pivot randomly)
+
+17.	Print all the nodes reachable from a given starting node in a digraph using BFS method. 
+
+18.	Check whether a given graph is connected or not using DFS method.
+
+19.	Obtain the Topological ordering of vertices in a given digraph.
+
+20.	Implement Ford-Fulkerson algorithm to find max flow in a given flow network.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//https://youtu.be/4ZlRH0eK-qQ?si=5ewdGAehfZQEYYML
+//https://youtu.be/DMnDM_sxVig?si=IXP9T1JMAlvvKAUo
+       //https://youtu.be/aBxjDBC4M1U?si=Wyny4U7muo2XuVqO
