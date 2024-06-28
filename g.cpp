@@ -1,5 +1,9 @@
 /*7.	Find Minimum Cost Spanning Tree of a given undirected graph using Kruskal's algorithm.*/
 
+//https://youtu.be/4ZlRH0eK-qQ?si=5ewdGAehfZQEYYML
+//https://youtu.be/DMnDM_sxVig?si=IXP9T1JMAlvvKAUo
+       //https://youtu.be/aBxjDBC4M1U?si=Wyny4U7muo2XuVqO
+
 
 #include <iostream>
 #include <vector>

@@ -19,7 +19,7 @@ void printParanthesis(int i, int j, int n, vector<vector<int>> s, char &ch) {
 }
 
 int main() {
-  int n,r,min,q;
+  int n;
   cout << "Enter size : ";
   cin >> n;
   vector<int> arr(n);
@@ -27,12 +27,12 @@ int main() {
   for (int i=0;i<n;i++)
     cin >> arr[i];
   vector<vector<int>> m(n, vector<int>(n, 0)),s(n, vector<int>(n, 0));
-  for (int i=1;i<n-1;i++)
+  for (int i=1;i<n-1;i++){
     for(int j=1;j<n-i;j++) {
-      r = j+i;
-      min = INT_MAX;
-      for(int k=j;k<=r-1;k++) {
-        q = m[j][k]+m[k+1][r]+arr[j-1]*arr[k]*arr[r];
+      int r = j+i;
+      int min = INT_MAX;
+      for(int k=j;k<r;k++) {
+        int q = m[j][k]+m[k+1][r]+arr[j-1]*arr[k]*arr[r];
         if(q<min) {
           min = q;
           s[j][r] = k;
@@ -40,6 +40,7 @@ int main() {
       }
       m[j][r] = min;
     }
+  }
   cout << "Minimum cost is : " << m[1][n-1] << endl;
   char ch = 'A';
   cout << "Optimal paranthesization is : ";
