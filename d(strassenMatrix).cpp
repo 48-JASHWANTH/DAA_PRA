@@ -135,7 +135,7 @@ int main() {
     if (n1 != m2) {
         cout << "Matrices cannot be multiplied." << endl;
         return 0;
-    }
+    } 
 
     vector<vector<int>> A(m1, vector<int>(n1));
     vector<vector<int>> B(m2, vector<int>(n2));

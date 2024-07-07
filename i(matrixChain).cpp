@@ -24,21 +24,22 @@ int main() {
   cin >> n;
   vector<int> arr(n);
   cout << "Enter matrix dimensions\n";
-  for (int i=0;i<n;i++)
+  for (int i=0;i<n;i++){
     cin >> arr[i];
+  }
   vector<vector<int>> m(n, vector<int>(n, 0)),s(n, vector<int>(n, 0));
   for (int i=1;i<n-1;i++){
     for(int j=1;j<n-i;j++) {
-      int r = j+i;
-      int min = INT_MAX;
+      int r = i+j; 
+      int mini = INT_MAX;
       for(int k=j;k<r;k++) {
         int q = m[j][k]+m[k+1][r]+arr[j-1]*arr[k]*arr[r];
-        if(q<min) {
-          min = q;
+        if(q<mini) {
+          mini = q;
           s[j][r] = k;
         }
       }
-      m[j][r] = min;
+      m[j][r] = mini;
     }
   }
   cout << "Minimum cost is : " << m[1][n-1] << endl;

@@ -1,57 +1,63 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-
+#include<bits/stdc++.h>
 using namespace std;
 
-void addEdge(vector<int> adj[], int u, int v) {
-    adj[u].push_back(v);
-}
-
-void BFS(vector<int> adj[], int V, int start) {
-    vector<bool> visited(V, false);
+void bfs(vector<vector<int>>& adjList, int startNode, vector<bool>& visited) {
     queue<int> q;
 
-    visited[start] = true;
-    q.push(start);
+    // Mark the current node as visited and enqueue it
+    visited[startNode] = true;
+    q.push(startNode);
 
+    // Iterate over the queue
     while (!q.empty()) {
-        int node = q.front();
+        // Dequeue a vertex from queue and print it
+        int currentNode = q.front();
         q.pop();
-        cout << node << " ";
+        cout << currentNode << " ";
 
-        for (auto i : adj[node]) {
-            if (!visited[i]) {
-                visited[i] = true;
-                q.push(i);
+        // Get all adjacent vertices of the dequeued vertex
+        // currentNode. If an adjacent has not been visited,
+        // then mark it visited and enqueue it
+        for (int neighbor : adjList[currentNode]) {
+            if (visited[neighbor] == false) {
+                visited[neighbor] = true;
+                q.push(neighbor);
             }
         }
     }
 }
 
+
 int main() {
-    int V, E;
-    cout << "Enter the number of vertices: ";
-    cin >> V;
+    int vertices, edges;
     
-    vector<int> adj[V];
-
+    // Read number of vertices and edges
+    cout << "Enter the number of vertices: ";
+    cin >> vertices;
     cout << "Enter the number of edges: ";
-    cin >> E;
+    cin >> edges;
 
-    cout << "Enter the edges (u v) one per line:\n";
-    for (int i = 0; i < E; i++) {
+    // Adjacency list representation of the graph
+    vector<vector<int>> adjList(vertices);
+
+    // Read edges from the user
+    cout << "Enter the edges (u v):" << endl;
+    for (int i = 0; i < edges; ++i) {
         int u, v;
         cin >> u >> v;
-        addEdge(adj, u, v);
+        adjList[u].push_back(v);
     }
 
-    int startNode;
-    cout << "Enter the starting node: ";
-    cin >> startNode;
+    // Mark all the vertices as not visited
+    vector<bool> visited(vertices, false);
 
-    cout << "Nodes reachable from node " << startNode << " are: ";
-    BFS(adj, V, startNode);
+    // Perform BFS traversal starting from a user-specified vertex
+    int startNode;
+    cout << "Enter the starting vertex for BFS: ";
+    cin >> startNode;
+    
+    cout << "Breadth First Traversal starting from vertex " << startNode << ": ";
+    bfs(adjList, startNode, visited);
 
     return 0;
 }

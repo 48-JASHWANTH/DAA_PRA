@@ -8,11 +8,11 @@ void addEdge(vector<int> adj[], int u, int v) {
     adj[u].push_back(v);
 }
 
-void topologicalSortUtil(int v, vector<int> adj[], vector<bool>& visited, stack<int>& Stack) {
+void topologicalSortUtil(int v, vector<vector<int>> adj, vector<bool>& visited, stack<int>& Stack) {
     visited[v] = true;
     
     for (int i : adj[v]) {
-        if (!visited[i]) {
+        if (visited[i] == false) {
             topologicalSortUtil(i, adj, visited, Stack);
         }
     }
@@ -20,12 +20,12 @@ void topologicalSortUtil(int v, vector<int> adj[], vector<bool>& visited, stack<
     Stack.push(v);
 }
 
-void topologicalSort(vector<int> adj[], int V) {
+void topologicalSort(vector<vector<int>> adj, int V) {
     stack<int> Stack;
     vector<bool> visited(V, false);
     
     for (int i = 0; i < V; i++) {
-        if (!visited[i]) {
+        if (visited[i] == false) {
             topologicalSortUtil(i, adj, visited, Stack);
         }
     }
@@ -41,7 +41,7 @@ int main() {
     cout << "Enter the number of vertices: ";
     cin >> V;
     
-    vector<int> adj[V];
+    vector<vector<int>> adj;
     
     cout << "Enter the number of edges: ";
     cin >> E;
@@ -50,7 +50,7 @@ int main() {
     for (int i = 0; i < E; i++) {
         int u, v;
         cin >> u >> v;
-        addEdge(adj, u, v);
+        adj[u].push_back(v);
     }
     
     cout << "Topological ordering of the vertices:\n";

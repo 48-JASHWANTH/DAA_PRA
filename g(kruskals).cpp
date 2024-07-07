@@ -17,7 +17,7 @@ struct Edge {
 };
 
 // Compare two edges according to their weights
-bool compareEdges(const Edge& a, const Edge& b) {
+bool compareEdges(Edge a, Edge b) {
     return a.weight < b.weight;
 }
 
@@ -70,7 +70,7 @@ pair<vector<Edge>, int> kruskal(int n, vector<Edge>& edges) {
     int mstCost = 0;
 
     // Process each edge in the sorted order
-    for (const Edge& edge : edges) {
+    for (auto &edge : edges) {
         if (uf.find(edge.u) != uf.find(edge.v)) {
             uf.unionSets(edge.u, edge.v);
             mst.push_back(edge);
@@ -102,7 +102,7 @@ int main() {
 
     // Display the result
     cout << "Edges in the Minimum Cost Spanning Tree:" << endl;
-    for (const Edge& edge : mst) {
+    for (auto &edge : mst) {
         cout << "Edge: (" << edge.u << ", " << edge.v << ") Weight: " << edge.weight << endl;
     }
     cout << "Total cost of the Minimum Cost Spanning Tree: " << mstCost << endl;

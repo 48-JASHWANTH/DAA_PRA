@@ -12,7 +12,7 @@ struct Job {
 };
 
 // Comparator function for sorting jobs by decreasing profit
-bool compareJobs(const Job &a, const Job &b) { return a.profit > b.profit; }
+bool compareJobs(Job a,Job b) { return a.profit > b.profit; }
 
 // Function to schedule jobs and find maximum profit
 void scheduleJobs(vector<Job> &jobs) {

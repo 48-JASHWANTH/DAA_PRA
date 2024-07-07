@@ -1,10 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <limits>
-
+#include<bits/stdc++.h>
 using namespace std;
 
-int TSP(const vector<vector<int>>& graph, int pos, int visited, vector<vector<int>>& dp) {
+int TSP(vector<vector<int>>& graph, int pos, int visited, vector<vector<int>>& dp) {
     int n = graph.size();
 
     // Base case: all cities have been visited
@@ -17,10 +14,10 @@ int TSP(const vector<vector<int>>& graph, int pos, int visited, vector<vector<in
         return dp[pos][visited];
     }
 
-    int minCost = numeric_limits<int>::max();
+    int minCost = INT_MAX;
 
     // Try visiting the unvisited cities
-    for (int city = 0; city < n; ++city) {
+    for (int city = 0; city < n; city++) {
         if ((visited & (1 << city)) == 0) {
             int newVisited = visited | (1 << city);
             int cost = graph[pos][city] + TSP(graph, city, newVisited, dp);

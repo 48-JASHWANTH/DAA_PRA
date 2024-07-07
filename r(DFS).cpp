@@ -4,27 +4,21 @@
 
 using namespace std;
 
-void addEdge(vector<int> adj[], int u, int v) {
-    adj[u].push_back(v);
-    adj[v].push_back(u); // Since the graph is undirected
-}
 
-void DFSUtil(int v, vector<int> adj[], bool visited[]) {
-    visited[v] = true;
+void DFS(int node, vector<vector<int>> adj, vector<bool> visited) {
+    visited[node] = true;
     
-    for (int i : adj[v]) {
-        if (!visited[i]) {
-            DFSUtil(i, adj, visited);
+    for (int i : adj[node]) {
+        if (visited[i] == false) {
+            DFS(i, adj, visited);
         }
     }
 }
 
-bool isConnected(vector<int> adj[], int V) {
-    bool visited[V];
-    memset(visited, false, sizeof(visited));
+bool isConnected(vector<vector<int>> adj, int V) {
+    vector<bool> visited(V,false);
     
-    // Perform DFS from the first vertex (assuming vertex numbering starts from 0)
-    DFSUtil(0, adj, visited);
+    DFS(0, adj, visited);
     
     // Check if all vertices are visited
     for (int i = 0; i < V; i++) {
@@ -41,7 +35,7 @@ int main() {
     cout << "Enter the number of vertices: ";
     cin >> V;
     
-    vector<int> adj[V];
+    vector<vector<int>> adj;
     
     cout << "Enter the number of edges: ";
     cin >> E;
@@ -50,7 +44,7 @@ int main() {
     for (int i = 0; i < E; i++) {
         int u, v;
         cin >> u >> v;
-        addEdge(adj, u, v);
+        adj[u].push_back(v);
     }
     
     if (isConnected(adj, V)) {

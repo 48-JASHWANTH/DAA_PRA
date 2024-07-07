@@ -41,7 +41,7 @@ double fractionalKnapsack(int capacity, vector<Item> items) {
         } else {
             // If adding the whole item exceeds capacity, add fractional part
             int remainingWeight = capacity - currentWeight;
-            totalValue += item.value * ((double)remainingWeight / item.weight);
+            totalValue += item.value * ((double)remainingWeight/item.weight);
             break;
         }
     }
@@ -63,10 +63,8 @@ int main() {
 
     cout << "Enter the weight and value of each item:" << endl;
     for (int i = 0; i < n; i++) {
-        cout << "Item " << i + 1 << " - Weight: ";
-        cin >> items[i].weight;
-        cout << "Item " << i + 1 << " - Value: ";
-        cin >> items[i].value;
+        cout << "Item " << i + 1 << " details(weight & value):";
+        cin >> items[i].weight>> items[i].value;
     }
 
     double maxValue = fractionalKnapsack(capacity, items);

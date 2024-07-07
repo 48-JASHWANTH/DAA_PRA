@@ -1,29 +1,28 @@
-#include <iostream>
-#include <cstdlib> // For rand() and srand()
-#include <ctime> // For time()
-
+#include<bits/stdc++.h>
 using namespace std;
 
-void swap(int* a, int* b) {
-    int t = *a;
-    *a = *b;
-    *b = t;
-}
 
 int randomizedPartition(int arr[], int low, int high) {
     int pivotIndex = low + rand() % (high - low + 1);
-    swap(&arr[pivotIndex], &arr[high]);
-    int pivot = arr[high];
-    int i = (low - 1);
+    swap(arr[pivotIndex], arr[low]);
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
 
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j] <= pivot) {
+    while (i < j) {
+        while (arr[i] <= pivot && i < high) {
             i++;
-            swap(&arr[i], &arr[j]);
+        }
+        while (arr[j] > pivot && j > low) {
+            j--;
+        }
+        if (i < j) {
+            swap(arr[i], arr[j]);
         }
     }
-    swap(&arr[i + 1], &arr[high]);
-    return (i + 1);
+    // Place pivot in its correct position
+    swap(arr[low], arr[j]);
+    return j;
 }
 
 void randomizedQuickSort(int arr[], int low, int high) {
@@ -46,7 +45,7 @@ int main() {
     cout << "Enter the number of elements: ";
     cin >> n;
 
-    int* arr = new int[n];
+    int arr[n];
     cout << "Enter the elements: ";
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
@@ -55,7 +54,5 @@ int main() {
     randomizedQuickSort(arr, 0, n - 1);
     cout << "Sorted array: \n";
     printArray(arr, n);
-
-    delete[] arr;
     return 0;
 }

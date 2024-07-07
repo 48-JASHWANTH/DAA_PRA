@@ -35,7 +35,7 @@ int main() {
         if (v[i][j] == target) {
             flag = true;
             break;
-        } else if (v[i][j] > target) {
+        } else if (v[i][j] > target) { 
             j--;
         } else {
             i++;

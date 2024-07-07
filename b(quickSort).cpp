@@ -8,12 +8,7 @@
 
 using namespace std;
 
-// Swap function
-void swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
+
 
 // Choose pivot based on the selected strategy
 int choosePivot(vector<int> &arr, int low, int high, int pivotType) {
@@ -30,9 +25,8 @@ int choosePivot(vector<int> &arr, int low, int high, int pivotType) {
                 return low;
             else
                 return high;
-        default:
-            return low; // Default to first element if invalid choice
     }
+    return low;
 }
 
 // Partition function with pivot selection

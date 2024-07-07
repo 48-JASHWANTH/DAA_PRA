@@ -1,25 +1,19 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <limits>
-
+#include<bits/stdc++.h>
 using namespace std;
-
-// Structure to represent a graph edge
 struct Edge {
+    int from;
     int dest;
     int weight;
 };
 
-// Function to perform Dijkstra's algorithm
 void dijkstra(vector<vector<Edge>>& graph, int source) {
     int n = graph.size(); // number of vertices
     
     // Priority queue to store {distance, vertex}
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
     
     // Distance array to store shortest path distances from source
-    vector<int> dist(n, numeric_limits<int>::max());
+    vector<int> dist(n,INT_MAX);
     
     // Mark source distance as 0 and push it to the priority queue
     dist[source] = 0;
@@ -34,7 +28,7 @@ void dijkstra(vector<vector<Edge>>& graph, int source) {
         if (u_dist > dist[u]) continue;
         
         // Iterate through all adjacent vertices of u
-        for (const Edge& edge : graph[u]) {
+        for (auto &edge : graph[u]) {
             int v = edge.dest;
             int weight = edge.weight;
             
@@ -57,13 +51,19 @@ int main() {
     cout << "Enter number of vertices and edges: ";
     cin >> n >> m;
     
-    vector<vector<Edge>> graph(n);
+    vector<Edge> edges;
     
     cout << "Enter " << m << " edges (from, to, weight):" << endl;
     for (int i = 0; i < m; ++i) {
         int from, to, weight;
         cin >> from >> to >> weight;
-        graph[from].push_back({to, weight});
+        edges.push_back({from, to, weight});
+    }
+    
+    // Create adjacency list from edges
+    vector<vector<Edge>> graph(n);
+    for(auto &edge:edges){
+        graph[edge.from].push_back(edge);
     }
     
     int source;

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void findSubsets(const vector<int>& set, int n, int sum, vector<int>& subset) {
+void findSubsets(vector<int> &set, int n, int sum, vector<int> &subset) {
     // Base case: if the sum is 0, print the current subset
     if (sum == 0) {
         cout << "Subset with given sum: ";
@@ -30,6 +30,7 @@ void findSubsets(const vector<int>& set, int n, int sum, vector<int>& subset) {
     subset.pop_back();
 }
 
+
 int main() {
     int n;
     cout<<"Enter size:";
@@ -42,7 +43,7 @@ int main() {
     cin>>sum;
     vector<int> subset;
 
-    findSubsets(set, set.size(), sum, subset);
+    findSubsets(set, n, sum, subset);
 
     return 0;
 }
