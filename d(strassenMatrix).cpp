@@ -1,9 +1,3 @@
-// 4.	Implement Strassen algorithm for matrix multiplication and analyse its running time.
-
-
-//https://youtu.be/0oJyNmEbS4w?si=VdS1uEcTMI-1S79I
-//https://youtu.be/DkGMht7MOec?si=kR8vQfMTtZdwaxf6
-
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -18,15 +12,16 @@ void inputMatrix(vector<vector<int>>& matrix, int rows, int cols) {
     }
 }
 
-void printMatrix(const vector<vector<int>>& matrix, int size) {
+void printMatrix(const vector<vector<int>>& matrix, int originalRows, int originalCols) {
     cout << "Resultant matrix:" << endl;
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
+    for (int i = 0; i < originalRows; i++) {
+        for (int j = 0; j < originalCols; j++) {
             cout << matrix[i][j] << " ";
         }
         cout << endl;
     }
 }
+
 vector<vector<int>> padMatrix(const vector<vector<int>>& matrix, int rows, int cols, int paddedSize) {
     vector<vector<int>> paddedMatrix(paddedSize, vector<int>(paddedSize, 0));
     for (int i = 0; i < rows; i++) {
@@ -109,10 +104,10 @@ vector<vector<int>> strassenMultiply(const vector<vector<int>>& A, const vector<
 
     // Recursive steps for Strassen algorithm
     vector<vector<int>> M1 = strassenMultiply(add(A11, A22), add(B11, B22));
-    vector<vector<int>> M2 = strassenMultiply(B11, add(A21, A22));
+    vector<vector<int>> M2 = strassenMultiply(add(A21, A22), B11);
     vector<vector<int>> M3 = strassenMultiply(A11, sub(B12, B22));
     vector<vector<int>> M4 = strassenMultiply(A22, sub(B21, B11));
-    vector<vector<int>> M5 = strassenMultiply(B22, add(A11, A12));
+    vector<vector<int>> M5 = strassenMultiply(add(A11, A12), B22);
     vector<vector<int>> M6 = strassenMultiply(sub(A21, A11), add(B11, B12));
     vector<vector<int>> M7 = strassenMultiply(sub(A12, A22), add(B21, B22));
 
@@ -145,17 +140,18 @@ int main() {
     vector<vector<int>> A(m1, vector<int>(n1));
     vector<vector<int>> B(m2, vector<int>(n2));
 
-    cout << "Enter the elements of first matrix" << endl;
+    cout << "Enter the elements of the first matrix:" << endl;
     inputMatrix(A, m1, n1);
-    cout << "Enter the elements of second matrix" << endl;
+    cout << "Enter the elements of the second matrix:" << endl;
     inputMatrix(B, m2, n2);
 
-    int size = max(max(m1, n1),max(m2,n2));
-    size = (int)pow(2,ceil(log(size)/log(2)));
+    int maxSize = max(max(m1,n1),max(m2,n2));
+    int size = pow(2, ceil(log2(maxSize))); // Ensure size is the next power of 2
 
     vector<vector<int>> paddedA = padMatrix(A, m1, n1, size);
     vector<vector<int>> paddedB = padMatrix(B, m2, n2, size);
 
     vector<vector<int>> C = strassenMultiply(paddedA, paddedB);
-    printMatrix(C, size);
+
+    printMatrix(C, m1, n2); // Print only the relevant part of the resultant matrix
 }
