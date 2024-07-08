@@ -8,8 +8,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// A utility function to get sum of 
-// array elements freq[i] to freq[j] 
 int sum(int freq[], int i, int j) { 
 	int s = 0; 
 	for (int r = i; r <= j; r++) 
@@ -17,8 +15,7 @@ int sum(int freq[], int i, int j) {
 	return s; 
 }  
  
-int optCost(int freq[], int i, int j) 
-{  
+int optCost(int freq[], int i, int j) {  
 	if(j<i) return 0;
 	if(i==j) return freq[i];
 	int fsum = sum(freq,i,j);

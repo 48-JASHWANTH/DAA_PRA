@@ -4,10 +4,7 @@
 //https://youtu.be/DMnDM_sxVig?si=IXP9T1JMAlvvKAUo
        //https://youtu.be/aBxjDBC4M1U?si=Wyny4U7muo2XuVqO
 
-
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -52,7 +49,6 @@ public:
             }
         }
     }
-
 private:
     vector<int> parent;
     vector<int> rank;

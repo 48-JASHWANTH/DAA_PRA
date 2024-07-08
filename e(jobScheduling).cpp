@@ -26,7 +26,7 @@ void scheduleJobs(vector<Job> &jobs) {
   for (int i = 0; i < n; ++i) {
     // Find a free slot for the current job (start from the last possible)
     for (int j = min(n - 1, jobs[i].deadline - 1); j >= 0; --j) {
-      if (!slot[j]) {
+      if (slot[j] == false) {
         slot[j] = true; // Mark slot as occupied
         maxProfit += jobs[i].profit;
         break;
@@ -45,7 +45,7 @@ int main() {
   vector<Job> jobs(numJobs);
   
 
-  for (int i = 0; i < numJobs; ++i) {
+  for (int i = 0; i < numJobs; i++) {
     cout << "Enter job " << i + 1 << " details (deadline profit): ";
     cin >> jobs[i].deadline >> jobs[i].profit;
   }
